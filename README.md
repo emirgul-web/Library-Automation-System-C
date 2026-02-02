@@ -1,39 +1,36 @@
-📚 Kütüphane Otomasyon Sistemi (Library Automation System)
-Bu proje, C programlama dili kullanılarak geliştirilmiş, verilerin dinamik bellek yönetimi ve Bağlı Liste (Linked List) yapıları üzerinde tutulduğu kapsamlı bir kütüphane yönetim sistemidir.
+# 📚 Library Automation System (C Based)
 
-Proje, standart dizi (array) yapısı yerine, bellek verimliliği sağlayan işaretçi (pointer) tabanlı veri yapılarını ve verilerin kalıcılığı için CSV dosya sistemini kullanır.
+![Language](https://img.shields.io/badge/Language-C-blue)
+![Structure](https://img.shields.io/badge/Data%20Structure-Linked%20Lists-orange)
+![Storage](https://img.shields.io/badge/Storage-CSV%20File%20IO-yellow)
 
-🚀 Öne Çıkan Teknik Yetkinlikler
-Bu proje, temel programlamanın ötesinde şu ileri seviye C konseptlerini içerir:
+Bu proje, **C programlama dili** kullanılarak geliştirilmiş, verilerin **Bağlı Liste (Linked List)** yapıları üzerinde dinamik olarak yönetildiği kapsamlı bir kütüphane otomasyonudur.
 
-Dinamik Veri Yapıları: Öğrenci, Yazar ve Kitap verileri sabit boyutlu dizilerde değil, Tek ve Çift Yönlü Bağlı Listelerde (Singly & Doubly Linked Lists) dinamik olarak yönetilir.
+Sistem, sabit diziler yerine işaretçi (pointer) tabanlı bellek yönetimi kullanarak yüksek performans ve esneklik sağlar.
 
-Fonksiyon İşaretçileri (Function Pointers): Kod tekrarını önlemek ve modülerliği artırmak için jenerik listeleme fonksiyonlarında (void (*ListFunc)(void*)) fonksiyon işaretçileri kullanılmıştır.
+## 🚀 Proje Özellikleri
 
-Dosya İşlemleri (File I/O): Veriler program kapandığında kaybolmaz; .csv formatındaki veritabanı dosyalarına yazılır ve açılışta tekrar belleğe yüklenir (Parsing).
+Proje, ileri seviye C konseptlerini pratik bir uygulamada birleştirir:
 
-Manuel Bellek Yönetimi: malloc ve free fonksiyonları ile bellek sızıntılarını (memory leaks) önleyecek şekilde hassas bellek yönetimi yapılmıştır.
+* **Dinamik Veri Yapıları:** Öğrenci ve Kitap verileri için **Çift Yönlü Bağlı Liste (Doubly Linked List)** kullanılmıştır.
+* **Fonksiyon İşaretçileri (Function Pointers):** Kod tekrarını önlemek için jenerik listeleme fonksiyonları (`void (*ListFunc)`) kullanılmıştır.
+* **Kalıcı Veri (Persistence):** Program kapansa bile veriler özel parser (ayrıştırıcı) ile `.csv` dosyalarında saklanır ve geri yüklenir.
+* **Ceza Algoritması:** Kitapların iade tarihlerini `time.h` kütüphanesi ile hesaplayarak otomatik ceza puanı işler.
 
-🛠️ Sistem Özellikleri ve Modüller
-1. Öğrenci Yönetimi
-Sisteme yeni öğrenci eklendiğinde otomatik ID ataması yapar.
+## 🧠 Algoritma Mantığı
 
-Öğrencilerin ödünç aldığı kitapları ve ceza durumlarını takip eder.
+Sistemindeki **"Kitap-Yazar İlişkisi"** şu şekilde yönetilir:
 
-Çift Yönlü Bağlı Liste yapısı sayesinde veriler üzerinde ileri-geri gezinme imkanı sunar.
+1.  **Arama:** Girilen ISBN numarası, Kitap Bağlı Listesinde aranır ($O(n)$).
+2.  **Eşleştirme:** Kitap bulunduğunda, Yazar ID'si üzerinden Yazar Bağlı Listesine işaretçi (pointer) ile erişilir.
+3.  **Stok Kontrolü:** Kitap ödünç verilirse `stok` azalır, `ödünç_verilen` artar ve log dosyasına tarih damgası vurulur.
 
-2. Kitap ve Yazar Entegrasyonu
-Kitaplar, yazarlarıyla ilişkilendirilmiş (Linked) bir yapıda tutulur.
+## 📂 Proje Yapısı
 
-ISBN numarasına göre kitap sorgulama, güncelleme ve silme işlemleri yapılır.
-
-Kitapların stok durumu (Rafta / Ödünçte) anlık olarak güncellenir.
-
-3. Ödünç/İade Algoritması (Business Logic)
-Tarih Hesaplama: Kitap ödünç verildiği andan itibaren 15 günlük süre başlar.
-
-Ceza Sistemi: İade tarihi geçen her gün için öğrenciye otomatik ceza puanı yansıtılır.
-
-Kitap iade edilmeden yeni kitap alımı engellenir.
-
-
+```bash
+Library-Automation-System-C/
+├── src/
+│   └── main.c          # Ana kod (Structs, Pointers, Logic)
+├── data/               # Veritabanı (Kitaplar.csv, Ogrenciler.csv)
+├── docs/               # Proje raporu
+└── README.md
