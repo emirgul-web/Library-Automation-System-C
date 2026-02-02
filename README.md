@@ -37,7 +37,6 @@ Ceza Sistemi: İade tarihi geçen her gün için öğrenciye otomatik ceza puan�
 Kitap iade edilmeden yeni kitap alımı engellenir.
 
 📂 Proje Yapısı
-Bash
 Library-Automation-System-C/
 ├── src/
 │   └── main.c          # Ana kaynak kod (Main logic, Structs, Linked List ops)
@@ -47,7 +46,6 @@ Library-Automation-System-C/
 💻 Kurulum ve Çalıştırma
 Projeyi derlemek için GCC derleyicisi önerilir. Terminal veya CMD üzerinden şu komutları kullanabilirsiniz:
 
-Bash
 # Projeyi derle
 gcc src/main.c -o library_app
 
